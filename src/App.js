@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import BubbleChart from "./charts/scatter-bubble-chart";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="#F5F5F5 w-screen h-screen flex justify-center items-center">
+      <div className="bg-red-100 w-2/3 h-2/3 flex p-5">
+        <BubbleChart />
+      </div>
     </div>
   );
 }
