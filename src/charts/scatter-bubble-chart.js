@@ -11,8 +11,8 @@ const BubbleChart = () => {
   const getOptions = (type) => ({
     chart: {
       type,
-      //   width: null,
-      //   height: null,
+      width: 800,
+      height: 500,
     },
     title: {
       text: _.startCase(`${type} chart`),
@@ -27,8 +27,20 @@ const BubbleChart = () => {
     //     data: [1, 2, 1, 4, 3, 6],
     //   },
     // ],
+    colors: [
+      "#058DC7",
+      "#50B432",
+      "#ED561B",
+      "#DDDF00",
+      "#24CBE5",
+      "#64E572",
+      "#FF9655",
+      "#FFF263",
+      "#6AF9C4",
+    ],
     series: [
       {
+        name: "first",
         data: [
           [97, 36, 79],
           [94, 74, 60],
@@ -43,6 +55,7 @@ const BubbleChart = () => {
         ],
       },
       {
+        name: "country",
         data: [
           [25, 10, 87],
           [2, 75, 59],
@@ -56,24 +69,10 @@ const BubbleChart = () => {
           [54, 25, 81],
         ],
       },
-      {
-        data: [
-          [47, 47, 21],
-          [20, 12, 4],
-          [6, 76, 91],
-          [38, 30, 60],
-          [57, 98, 64],
-          [61, 17, 80],
-          [83, 60, 13],
-          [67, 78, 75],
-          [64, 12, 10],
-          [30, 77, 82],
-        ],
-      },
     ],
   });
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full flex justify-center">
       <HighchartsReact highcharts={Highcharts} options={getOptions("bubble")} />
     </div>
   );
