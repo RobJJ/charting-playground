@@ -13,7 +13,8 @@ const BubbleChart = () => {
       type,
       //   minWidth: 800,
       height: null,
-      maxWidth: 900,
+      // maxWidth: null,
+      width: null,
     },
 
     title: {
@@ -74,7 +75,11 @@ const BubbleChart = () => {
     ],
   });
   return (
-    <HighchartsReact highcharts={Highcharts} options={getOptions("bubble")} />
+    <HighchartsReact
+      containerProps={{ style: { height: "100%", width: "100%" } }}
+      highcharts={Highcharts}
+      options={getOptions("bubble")}
+    />
   );
 };
 
