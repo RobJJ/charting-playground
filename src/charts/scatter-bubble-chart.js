@@ -11,9 +11,11 @@ const BubbleChart = () => {
   const getOptions = (type) => ({
     chart: {
       type,
-      width: 800,
-      height: 500,
+      //   width: null,
+      //   minWidth: 800,
+      //   height: 500,
     },
+
     title: {
       text: _.startCase(`${type} chart`),
     },
@@ -72,8 +74,12 @@ const BubbleChart = () => {
     ],
   });
   return (
-    <div className="h-full w-full flex justify-center">
-      <HighchartsReact highcharts={Highcharts} options={getOptions("bubble")} />
+    <div className="h-full w-full ">
+      <HighchartsReact
+        className="bubble-chart"
+        highcharts={Highcharts}
+        options={getOptions("bubble")}
+      />
     </div>
   );
 };
