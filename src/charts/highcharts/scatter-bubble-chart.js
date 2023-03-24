@@ -16,15 +16,102 @@ const BubbleChart = () => {
       // maxWidth: null,
       width: null,
     },
-
+    // specify if you want the legend.. you can still add x-y desc
+    legend: {
+      enabled: false,
+    },
+    // heading for chart
     title: {
-      text: _.startCase(`${type} chart`),
+      // text: _.startCase(`Experimal build: Highchart: ${type} chart`),
+      text: `Experimental build - HighCharts - ${type} chart`,
+    },
+    // extra info for heading
+    subtitle: {
+      text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>',
     },
     yAxis: {
+      startOnTick: false,
+      endOnTick: false,
       title: {
-        text: "Values",
+        text: "Daily sugar intake",
+      },
+      labels: {
+        format: "{value} gr",
+      },
+      maxPadding: 0.2,
+      plotLines: [
+        {
+          color: "black",
+          dashStyle: "dot",
+          width: 2,
+          value: 50,
+          label: {
+            align: "right",
+            style: {
+              fontStyle: "italic",
+            },
+            text: "Safe sugar intake 50g/day",
+            x: -10,
+          },
+          zIndex: 3,
+        },
+      ],
+      accessibility: {
+        rangeDescription: "Range: 0 to 160 grams.",
       },
     },
+    xAxis: {
+      gridLineWidth: 1,
+      title: {
+        text: "Daily fat intake",
+      },
+      labels: {
+        format: "{value} gr",
+      },
+      plotLines: [
+        {
+          color: "black",
+          dashStyle: "dot",
+          width: 2,
+          value: 65,
+          label: {
+            rotation: 0,
+            y: 15,
+            style: {
+              fontStyle: "italic",
+            },
+            text: "Safe fat intake 65g/day",
+          },
+          zIndex: 3,
+        },
+      ],
+      accessibility: {
+        rangeDescription: "Range: 60 to 100 grams.",
+      },
+    },
+    tooltip: {
+      useHTML: true,
+      headerFormat: "<table>",
+      pointFormat:
+        '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+        "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
+        "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
+        "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
+      footerFormat: "</table>",
+      followPointer: true,
+      animation: true,
+      hideDelay: 100,
+    },
+    // this setting adds data to each bubble.. eg. point.name for data object
+    plotOptions: {
+      series: {
+        dataLabels: {
+          enabled: true,
+          format: "{point.name}",
+        },
+      },
+    },
+    // can specify what colors to use here
     colors: [
       "#058DC7",
       "#50B432",
