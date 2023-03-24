@@ -68,6 +68,10 @@ const BubbleChart = () => {
       labels: {
         format: "{value} gr",
       },
+      // setting custom ticker values here - chart determines if useful though
+      // tickPositions: [55, 60, 65, 70, 95],
+      // this is an interesting way to set the ticker - using function to determine tickers
+      // tickPositioner: function
       // plotLines: [
       //   {
       //     color: "black",
@@ -85,7 +89,7 @@ const BubbleChart = () => {
       //     zIndex: 3,
       //   },
       // ],
-      // this setting controls the values on axis
+      // this setting controls the values on axis - accessibility
       accessibility: {
         rangeDescription: "Range: 60 to 100 grams.",
       },
