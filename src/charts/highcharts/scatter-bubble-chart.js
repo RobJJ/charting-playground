@@ -61,30 +61,31 @@ const BubbleChart = () => {
       },
     },
     xAxis: {
-      gridLineWidth: 1,
+      // gridLineWidth: 1,
       title: {
         text: "Daily fat intake",
       },
       labels: {
         format: "{value} gr",
       },
-      plotLines: [
-        {
-          color: "black",
-          dashStyle: "dot",
-          width: 2,
-          value: 65,
-          label: {
-            rotation: 0,
-            y: 15,
-            style: {
-              fontStyle: "italic",
-            },
-            text: "Safe fat intake 65g/day",
-          },
-          zIndex: 3,
-        },
-      ],
+      // plotLines: [
+      //   {
+      //     color: "black",
+      //     dashStyle: "dot",
+      //     width: 2,
+      //     value: 65,
+      //     label: {
+      //       rotation: 0,
+      //       y: 15,
+      //       style: {
+      //         fontStyle: "italic",
+      //       },
+      //       text: "Safe fat intake 65g/day",
+      //     },
+      //     zIndex: 3,
+      //   },
+      // ],
+      // this setting controls the values on axis
       accessibility: {
         rangeDescription: "Range: 60 to 100 grams.",
       },
@@ -100,15 +101,37 @@ const BubbleChart = () => {
       footerFormat: "</table>",
       followPointer: true,
       animation: true,
-      hideDelay: 100,
+      hideDelay: 0,
+      distance: 30,
+      // custom position setter
+      // positioner: function () {
+      //   return { x: 80, y: 20 };
+      // },
+      // shadow: false,
+      // borderWidth: 0,
+      // backgroundColor: "rgba(255,255,255,0.8)",
     },
+    // can remove the highcharts credit reference
+    credits: {
+      enabled: false,
+    },
+
     // this setting adds data to each bubble.. eg. point.name for data object
     plotOptions: {
       series: {
+        // removes lingering tooltip
+        stickyTracking: false,
         dataLabels: {
           enabled: true,
           format: "{point.name}",
         },
+      },
+      bubble: {
+        cursor: "pointer",
+        dataLabels: {
+          enabled: true,
+        },
+        size: "125%",
       },
     },
     // can specify what colors to use here
