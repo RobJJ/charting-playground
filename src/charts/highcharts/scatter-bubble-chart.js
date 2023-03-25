@@ -68,8 +68,8 @@ const BubbleChart = () => {
         text: "GDP per capita in 2019, log scale, $",
       },
       type: "logarithmic",
-      min: 500,
-      max: 100000,
+      min: 1000,
+      max: 120000,
       // labels: {
       //   format: "{value} gr",
       // },
@@ -99,43 +99,49 @@ const BubbleChart = () => {
       //   rangeDescription: "Range: 60 to 100 grams.",
       // },
     },
-    tooltip: {
-      //   useHTML: true,
-      //   headerFormat: "<table>",
-      //   pointFormat:
-      //     '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-      //     "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
-      //     "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
-      //     "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
-      //   footerFormat: "</table>",
-      //   followPointer: true,
-      //   animation: true,
-      //   hideDelay: 0,
-      //   distance: 30,
-      //   // custom position setter
-      //   // positioner: function () {
-      //   //   return { x: 80, y: 20 };
-      //   // },
-      //   // shadow: false,
-      //   // borderWidth: 0,
-      //   // backgroundColor: "rgba(255,255,255,0.8)",
-      // },
-      // // can remove the highcharts credit reference
-      // credits: {
-      //   enabled: false,
+    // tooltip: {
+    //   useHTML: true,
+    //   headerFormat: "<table>",
+    //   pointFormat:
+    //     '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+    //     "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
+    //     "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
+    //     "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
+    //   footerFormat: "</table>",
+    //   followPointer: true,
+    //   animation: true,
+    //   hideDelay: 0,
+    //   distance: 30,
+    //   // custom position setter
+    //   // positioner: function () {
+    //   //   return { x: 80, y: 20 };
+    //   // },
+    //   // shadow: false,
+    //   // borderWidth: 0,
+    //   // backgroundColor: "rgba(255,255,255,0.8)",
+    // },
+    //
+    //
+    // // can remove the highcharts credit reference
+    credits: {
+      enabled: false,
     },
 
     // a general settings option
     plotOptions: {
       // general options for all series
-      // series: {
-      //   // removes lingering tooltip
-      //   stickyTracking: false,
-      //   dataLabels: {
-      //     enabled: true,
-      //     format: "{point.name}",
-      //   },
-      // },
+      series: {
+        // removes lingering tooltip
+        stickyTracking: false,
+        //  lables for each bubble..
+        // dataLabels: {
+        //   enabled: true,
+        //   format: "{point.name}",
+        // },
+        // Assign a unique color to each point in the series
+        colorByPoint: true,
+      },
+      // specific settings to this plot! not in general that is series
       // bubble: {
       //   cursor: "pointer",
       //   dataLabels: {
@@ -150,18 +156,20 @@ const BubbleChart = () => {
       "#50B432",
       "#ED561B",
       "#DDDF00",
-      "#24CBE5",
-      "#64E572",
+      "#f15c80",
+      "#2b908f",
       "#FF9655",
       "#FFF263",
       "#6AF9C4",
+      "#8085e9",
     ],
+
     series: [
       {
         type: "bubble",
         data: [
           {
-            id: "USA",
+            name: "USA",
             country: "United States",
             lifeExpectancy: 78.9,
             y: 78.9,
@@ -170,9 +178,10 @@ const BubbleChart = () => {
             region: "North America",
             population: 328239523,
             z: 328239523,
+            // color: "#50B432",
           },
           {
-            id: "CHN",
+            name: "CHN",
             country: "China",
             lifeExpectancy: 76.7,
             y: 76.7,
@@ -183,7 +192,7 @@ const BubbleChart = () => {
             z: 1397715000,
           },
           {
-            id: "JPN",
+            name: "JPN",
             country: "Japan",
             lifeExpectancy: 84.6,
             y: 84.6,
@@ -194,7 +203,7 @@ const BubbleChart = () => {
             z: 126010000,
           },
           {
-            id: "DEU",
+            name: "DEU",
             country: "Germany",
             lifeExpectancy: 80.9,
             y: 80.9,
@@ -205,7 +214,7 @@ const BubbleChart = () => {
             z: 83019200,
           },
           {
-            id: "GBR",
+            name: "GBR",
             country: "United Kingdom",
             lifeExpectancy: 81.3,
             y: 81.3,
@@ -216,7 +225,7 @@ const BubbleChart = () => {
             z: 66647112,
           },
           {
-            id: "IND",
+            name: "IND",
             country: "India",
             lifeExpectancy: 69.4,
             y: 69.4,
@@ -227,7 +236,7 @@ const BubbleChart = () => {
             z: 1366417756,
           },
           {
-            id: "BRA",
+            name: "BRA",
             country: "Brazil",
             lifeExpectancy: 75.9,
             y: 75.9,
@@ -238,7 +247,7 @@ const BubbleChart = () => {
             z: 211049527,
           },
           {
-            id: "RUS",
+            name: "RUS",
             country: "Russia",
             lifeExpectancy: 72.6,
             y: 72.6,
@@ -249,7 +258,7 @@ const BubbleChart = () => {
             z: 145872256,
           },
           {
-            id: "ZAF",
+            name: "ZAF",
             country: "South Africa",
             lifeExpectancy: 63.5,
             y: 63.5,
@@ -260,7 +269,7 @@ const BubbleChart = () => {
             z: 58558267,
           },
           {
-            id: "AUS",
+            name: "AUS",
             country: "Australia",
             lifeExpectancy: 83.5,
             y: 83.5,
@@ -272,6 +281,7 @@ const BubbleChart = () => {
           },
         ],
       },
+      //can add another data series here
     ],
   });
   return (
