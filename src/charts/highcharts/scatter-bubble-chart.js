@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+// import _ from "lodash";
 
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -31,43 +31,46 @@ const BubbleChart = () => {
     },
     yAxis: {
       startOnTick: false,
+
       endOnTick: false,
       title: {
-        text: "Daily sugar intake",
+        text: "Life expectancy in 2019, year",
       },
-      labels: {
-        format: "{value} gr",
-      },
+      // for labeling the tickers on axis
+      // labels: {
+      //   format: "{value} gr",
+      // },
       maxPadding: 0.2,
-      plotLines: [
-        {
-          color: "black",
-          dashStyle: "dot",
-          width: 2,
-          value: 50,
-          label: {
-            align: "right",
-            style: {
-              fontStyle: "italic",
-            },
-            text: "Safe sugar intake 50g/day",
-            x: -10,
-          },
-          zIndex: 3,
-        },
-      ],
-      accessibility: {
-        rangeDescription: "Range: 0 to 160 grams.",
-      },
+      // plotLines: [
+      //   {
+      //     color: "black",
+      //     dashStyle: "dot",
+      //     width: 2,
+      //     value: 50,
+      //     label: {
+      //       align: "right",
+      //       style: {
+      //         fontStyle: "italic",
+      //       },
+      //       text: "Safe sugar intake 50g/day",
+      //       x: -10,
+      //     },
+      //     zIndex: 3,
+      //   },
+      // ],
+      // accessibility: {
+      //   rangeDescription: "Range: 0 to 160 grams.",
+      // },
     },
     xAxis: {
       // gridLineWidth: 1,
       title: {
-        text: "Daily fat intake",
+        text: "GDP per capita in 2019, log scale, $",
       },
-      labels: {
-        format: "{value} gr",
-      },
+      type: "logarithmic",
+      // labels: {
+      //   format: "{value} gr",
+      // },
       // setting custom ticker values here - chart determines if useful though
       // tickPositions: [55, 60, 65, 70, 95],
       // this is an interesting way to set the ticker - using function to determine tickers
@@ -90,53 +93,54 @@ const BubbleChart = () => {
       //   },
       // ],
       // this setting controls the values on axis - accessibility
-      accessibility: {
-        rangeDescription: "Range: 60 to 100 grams.",
-      },
+      // accessibility: {
+      //   rangeDescription: "Range: 60 to 100 grams.",
+      // },
     },
     tooltip: {
-      useHTML: true,
-      headerFormat: "<table>",
-      pointFormat:
-        '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-        "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
-        "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
-        "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
-      footerFormat: "</table>",
-      followPointer: true,
-      animation: true,
-      hideDelay: 0,
-      distance: 30,
-      // custom position setter
-      // positioner: function () {
-      //   return { x: 80, y: 20 };
+      //   useHTML: true,
+      //   headerFormat: "<table>",
+      //   pointFormat:
+      //     '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+      //     "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
+      //     "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
+      //     "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
+      //   footerFormat: "</table>",
+      //   followPointer: true,
+      //   animation: true,
+      //   hideDelay: 0,
+      //   distance: 30,
+      //   // custom position setter
+      //   // positioner: function () {
+      //   //   return { x: 80, y: 20 };
+      //   // },
+      //   // shadow: false,
+      //   // borderWidth: 0,
+      //   // backgroundColor: "rgba(255,255,255,0.8)",
       // },
-      // shadow: false,
-      // borderWidth: 0,
-      // backgroundColor: "rgba(255,255,255,0.8)",
-    },
-    // can remove the highcharts credit reference
-    credits: {
-      enabled: false,
+      // // can remove the highcharts credit reference
+      // credits: {
+      //   enabled: false,
     },
 
-    // this setting adds data to each bubble.. eg. point.name for data object
+    // a general settings option
     plotOptions: {
-      series: {
-        // removes lingering tooltip
-        stickyTracking: false,
-        dataLabels: {
-          enabled: true,
-          format: "{point.name}",
-        },
-      },
-      bubble: {
-        cursor: "pointer",
-        dataLabels: {
-          enabled: true,
-        },
-        size: "125%",
-      },
+      // general options for all series
+      // series: {
+      //   // removes lingering tooltip
+      //   stickyTracking: false,
+      //   dataLabels: {
+      //     enabled: true,
+      //     format: "{point.name}",
+      //   },
+      // },
+      // bubble: {
+      //   cursor: "pointer",
+      //   dataLabels: {
+      //     enabled: true,
+      //   },
+      //   size: "125%",
+      // },
     },
     // can specify what colors to use here
     colors: [
@@ -152,24 +156,119 @@ const BubbleChart = () => {
     ],
     series: [
       {
+        type: "bubble",
         data: [
-          { x: 95, y: 95, z: 13.8, name: "BE", country: "Belgium" },
-          { x: 86.5, y: 102.9, z: 14.7, name: "DE", country: "Germany" },
-          { x: 80.8, y: 91.5, z: 15.8, name: "FI", country: "Finland" },
-          { x: 80.4, y: 102.5, z: 12, name: "NL", country: "Netherlands" },
-          { x: 80.3, y: 86.1, z: 11.8, name: "SE", country: "Sweden" },
-          { x: 78.4, y: 70.1, z: 16.6, name: "ES", country: "Spain" },
-          { x: 74.2, y: 68.5, z: 14.5, name: "FR", country: "France" },
-          { x: 73.5, y: 83.1, z: 10, name: "NO", country: "Norway" },
-          { x: 71, y: 93.2, z: 24.7, name: "UK", country: "United Kingdom" },
-          { x: 69.2, y: 57.6, z: 10.4, name: "IT", country: "Italy" },
-          { x: 68.6, y: 20, z: 16, name: "RU", country: "Russia" },
-          { x: 65.5, y: 126.4, z: 35.3, name: "US", country: "United States" },
-          { x: 65.4, y: 50.8, z: 28.5, name: "HU", country: "Hungary" },
-          { x: 63.4, y: 51.8, z: 15.4, name: "PT", country: "Portugal" },
-          { x: 64, y: 82.9, z: 31.3, name: "NZ", country: "New Zealand" },
+          {
+            id: "USA",
+            country: "United States",
+            lifeExpectancy: 78.9,
+            y: 78.9,
+            gdpPerCapita: 65297,
+            x: 65297,
+            region: "North America",
+            population: 328239523,
+            z: 328239523,
+          },
+          {
+            id: "CHN",
+            country: "China",
+            lifeExpectancy: 76.7,
+            y: 76.7,
+            gdpPerCapita: 10216,
+            x: 10216,
+            region: "Asia",
+            population: 1397715000,
+            z: 1397715000,
+          },
+          {
+            id: "JPN",
+            country: "Japan",
+            lifeExpectancy: 84.6,
+            y: 84.6,
+            gdpPerCapita: 40849,
+            x: 40849,
+            region: "Asia",
+            population: 126010000,
+            z: 126010000,
+          },
+          {
+            id: "DEU",
+            country: "Germany",
+            lifeExpectancy: 80.9,
+            y: 80.9,
+            gdpPerCapita: 46457,
+            x: 46457,
+            region: "Europe",
+            population: 83019200,
+            z: 83019200,
+          },
+          {
+            id: "GBR",
+            country: "United Kingdom",
+            lifeExpectancy: 81.3,
+            y: 81.3,
+            gdpPerCapita: 39720,
+            x: 39720,
+            region: "Europe",
+            population: 66647112,
+            z: 66647112,
+          },
+          {
+            id: "IND",
+            country: "India",
+            lifeExpectancy: 69.4,
+            y: 69.4,
+            gdpPerCapita: 2263,
+            x: 2263,
+            region: "Asia",
+            population: 1366417756,
+            z: 1366417756,
+          },
+          {
+            id: "BRA",
+            country: "Brazil",
+            lifeExpectancy: 75.9,
+            y: 75.9,
+            gdpPerCapita: 8714,
+            x: 8714,
+            region: "South America",
+            population: 211049527,
+            z: 211049527,
+          },
+          {
+            id: "RUS",
+            country: "Russia",
+            lifeExpectancy: 72.6,
+            y: 72.6,
+            gdpPerCapita: 11218,
+            x: 11218,
+            region: "Europe/Asia",
+            population: 145872256,
+            z: 145872256,
+          },
+          {
+            id: "ZAF",
+            country: "South Africa",
+            lifeExpectancy: 63.5,
+            y: 63.5,
+            gdpPerCapita: 6001,
+            x: 6001,
+            region: "Africa",
+            population: 58558267,
+            z: 58558267,
+          },
+          {
+            id: "AUS",
+            country: "Australia",
+            lifeExpectancy: 83.5,
+            y: 83.5,
+            gdpPerCapita: 57324,
+            x: 57324,
+            region: "Australia",
+            population: 25203198,
+            z: 25203198,
+          },
         ],
-        colorByPoint: true,
       },
     ],
   });
@@ -228,16 +327,23 @@ export default BubbleChart;
 // ];
 
 //
-// GDP per capita --- life exp : data
-// [
-//   ["USA", 78.9, 65297, "North America", 328239523],
-//   ["CHN", 76.7, 10216, "Asia", 1397715000],
-//   ["JPN", 84.6, 40849, "Asia", 126010000],
-//   ["DEU", 80.9, 46457, "Europe", 83019200],
-//   ["GBR", 81.3, 39720, "Europe", 66647112],
-//   ["IND", 69.4, 2263, "Asia", 1366417756],
-//   ["BRA", 75.9, 8714, "South America", 211049527],
-//   ["RUS", 72.6, 11218, "Europe/Asia", 145872256],
-//   ["ZAF", 63.5, 6001, "Africa", 58558267],
-//   ["AUS", 83.5, 57324, "Australia", 25203198],
-// ];
+// {
+//   data: [
+//     { x: 95, y: 95, z: 13.8, name: "BE", country: "Belgium" },
+//     { x: 86.5, y: 102.9, z: 14.7, name: "DE", country: "Germany" },
+//     { x: 80.8, y: 91.5, z: 15.8, name: "FI", country: "Finland" },
+//     { x: 80.4, y: 102.5, z: 12, name: "NL", country: "Netherlands" },
+//     { x: 80.3, y: 86.1, z: 11.8, name: "SE", country: "Sweden" },
+//     { x: 78.4, y: 70.1, z: 16.6, name: "ES", country: "Spain" },
+//     { x: 74.2, y: 68.5, z: 14.5, name: "FR", country: "France" },
+//     { x: 73.5, y: 83.1, z: 10, name: "NO", country: "Norway" },
+//     { x: 71, y: 93.2, z: 24.7, name: "UK", country: "United Kingdom" },
+//     { x: 69.2, y: 57.6, z: 10.4, name: "IT", country: "Italy" },
+//     { x: 68.6, y: 20, z: 16, name: "RU", country: "Russia" },
+//     { x: 65.5, y: 126.4, z: 35.3, name: "US", country: "United States" },
+//     { x: 65.4, y: 50.8, z: 28.5, name: "HU", country: "Hungary" },
+//     { x: 63.4, y: 51.8, z: 15.4, name: "PT", country: "Portugal" },
+//     { x: 64, y: 82.9, z: 31.3, name: "NZ", country: "New Zealand" },
+//   ],
+//   colorByPoint: true,
+// },
