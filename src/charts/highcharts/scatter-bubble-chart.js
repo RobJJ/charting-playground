@@ -226,3 +226,18 @@ export default BubbleChart;
 //     colorByPoint: true,
 //   },
 // ];
+
+//
+// GDP per capita --- life exp : data
+// [
+//   ["USA", 78.9, 65297, "North America", 328239523],
+//   ["CHN", 76.7, 10216, "Asia", 1397715000],
+//   ["JPN", 84.6, 40849, "Asia", 126010000],
+//   ["DEU", 80.9, 46457, "Europe", 83019200],
+//   ["GBR", 81.3, 39720, "Europe", 66647112],
+//   ["IND", 69.4, 2263, "Asia", 1366417756],
+//   ["BRA", 75.9, 8714, "South America", 211049527],
+//   ["RUS", 72.6, 11218, "Europe/Asia", 145872256],
+//   ["ZAF", 63.5, 6001, "Africa", 58558267],
+//   ["AUS", 83.5, 57324, "Australia", 25203198],
+// ];
