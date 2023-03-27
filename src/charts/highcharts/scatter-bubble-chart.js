@@ -99,27 +99,28 @@ const BubbleChart = () => {
       //   rangeDescription: "Range: 60 to 100 grams.",
       // },
     },
-    // tooltip: {
-    //   useHTML: true,
-    //   headerFormat: "<table>",
-    //   pointFormat:
-    //     '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-    //     "<tr><th>Fat intake:</th><td>{point.x}g</td></tr>" +
-    //     "<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>" +
-    //     "<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>",
-    //   footerFormat: "</table>",
-    //   followPointer: true,
-    //   animation: true,
-    //   hideDelay: 0,
-    //   distance: 30,
-    //   // custom position setter
-    //   // positioner: function () {
-    //   //   return { x: 80, y: 20 };
-    //   // },
-    //   // shadow: false,
-    //   // borderWidth: 0,
-    //   // backgroundColor: "rgba(255,255,255,0.8)",
-    // },
+    tooltip: {
+      // enabled: false,
+      useHTML: true,
+      headerFormat: "<table>",
+      pointFormat:
+        '<tr><th colspan="2"><h3><u>{point.country}</u></h3></th></tr>' +
+        "<tr><th>GDP per capita:</th><td>$ {point.x}</td></tr>" +
+        "<tr><th>Life Expectancy:</th><td>{point.y} years</td></tr>" +
+        "<tr><th>Population:</th><td>{point.z}</td></tr>",
+      // footerFormat: "</table>",
+      // followPointer: true,
+      // animation: true,
+      // hideDelay: 0,
+      // distance: 30,
+      // custom position setter
+      // positioner: function () {
+      //   return { x: 80, y: 20 };
+      // },
+      // shadow: false,
+      // borderWidth: 0,
+      // backgroundColor: "rgba(255,255,255,0.8)",
+    },
     //
     //
     // // can remove the highcharts credit reference
