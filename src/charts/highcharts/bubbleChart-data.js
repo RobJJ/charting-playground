@@ -1,4 +1,18 @@
-export const GDP_LIFE_DATA = [
+const GDP_LIFE_DATA_WORLD = [
+  {
+    name: "WLD",
+    country: "World",
+    lifeExpectancy: 72.6,
+    y: 72.6,
+    gdpPerCapita: 11817,
+    x: 11817,
+    region: "World",
+    population: 7794798729,
+    z: 7794798729,
+  },
+];
+
+const GDP_LIFE_DATA_COUNTRY = [
   {
     name: "USA",
     country: "United States",
@@ -111,3 +125,8 @@ export const GDP_LIFE_DATA = [
     z: 25203198,
   },
 ];
+
+export const GDP_LIFE_DATA = {
+  world: GDP_LIFE_DATA_WORLD,
+  country: GDP_LIFE_DATA_COUNTRY,
+};
