@@ -127,6 +127,24 @@ const GDP_LIFE_DATA_COUNTRY = [
 ];
 
 export const GDP_LIFE_DATA = {
+  //   world: [
+  //     {
+  //       type: "bubble",
+  //       data: GDP_LIFE_DATA_WORLD,
+  //       animation: {
+  //         duration: 1000,
+  //       },
+  //     },
+  //   ],
+  //   country: [
+  //     {
+  //       type: "bubble",
+  //       data: GDP_LIFE_DATA_COUNTRY,
+  //       animation: {
+  //         duration: 1000,
+  //       },
+  //     },
+  //   ],
   world: GDP_LIFE_DATA_WORLD,
   country: GDP_LIFE_DATA_COUNTRY,
 };

@@ -5,6 +5,7 @@ import HighchartsPage from "./pages/highcharts-page";
 // import Toggle from "./charts/highcharts/toggle";
 
 function App() {
+  console.log("---- APP JS ----");
   return (
     <div className="#F5F5F5 w-screen h-screen flex justify-center items-center">
       <div className="bg-red-100 w-2/3 h-2/3 p-5">
