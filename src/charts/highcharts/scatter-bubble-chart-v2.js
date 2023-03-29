@@ -9,23 +9,24 @@ HC_more(Highcharts);
 const BubbleChartVersion2 = () => {
   const chartRef = useRef(null);
   const [chart, setChart] = useState(null);
+  const getOriginalData = () => [
+    {
+      x: 0,
+      y: 0,
+      z: 100, // set the size of the bubble
+    },
+  ];
   const options = {
     chart: {
       type: "bubble",
       animation: {
-        duration: 1000, // set the duration of the animation in milliseconds
+        duration: 2000, // set the duration of the animation in milliseconds
       },
     },
     series: [
       {
         name: "World",
-        data: [
-          {
-            x: 0,
-            y: 0,
-            z: 100, // set the size of the bubble
-          },
-        ],
+        data: getOriginalData(),
       },
     ],
   };
@@ -34,35 +35,26 @@ const BubbleChartVersion2 = () => {
     setChart(Highcharts.chart(chartRef.current, options));
   }, []);
 
+  const getAlternativeData = () => [
+    {
+      x: 10,
+      y: 10,
+      z: 20, // set the size of the first country bubble
+    },
+    {
+      x: 20,
+      y: 20,
+      z: 30, // set the size of the second country bubble
+    },
+    {
+      x: 30,
+      y: 30,
+      z: 50, // set the size of the third country bubble
+    },
+  ];
+
   const handleClick = () => {
-    chart.update({
-      series: [
-        {
-          name: "Countries",
-          data: [
-            {
-              x: 10,
-              y: 10,
-              z: 20, // set the size of the first country bubble
-            },
-            {
-              x: 20,
-              y: 20,
-              z: 30, // set the size of the second country bubble
-            },
-            {
-              x: 30,
-              y: 30,
-              z: 50, // set the size of the third country bubble
-            },
-          ],
-          animation: {
-            duration: 1000, // set the duration of the animation in milliseconds
-            easing: "easeOutBounce",
-          },
-        },
-      ],
-    });
+    chart.series[0].setData(getAlternativeData());
   };
 
   return (
@@ -74,3 +66,32 @@ const BubbleChartVersion2 = () => {
 };
 
 export default BubbleChartVersion2;
+
+// chart.update({
+//   series: [
+//     {
+//       name: "Countries",
+//       data: [
+//         {
+//           x: 10,
+//           y: 10,
+//           z: 20, // set the size of the first country bubble
+//         },
+//         {
+//           x: 20,
+//           y: 20,
+//           z: 30, // set the size of the second country bubble
+//         },
+//         {
+//           x: 30,
+//           y: 30,
+//           z: 50, // set the size of the third country bubble
+//         },
+//       ],
+//       animation: {
+//         duration: 1000, // set the duration of the animation in milliseconds
+//         easing: "easeOutBounce",
+//       },
+//     },
+//   ],
+// });
