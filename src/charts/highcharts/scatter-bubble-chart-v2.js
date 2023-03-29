@@ -8,25 +8,25 @@ HC_more(Highcharts);
 //
 const getOriginalData = () => [
   {
-    x: 0,
-    y: 0,
+    x: 4500,
+    y: 60,
     z: 100, // set the size of the bubble
   },
 ];
 const getAlternativeData = () => [
   {
-    x: 10,
-    y: 10,
+    x: 6000,
+    y: 50,
     z: 20, // set the size of the first country bubble
   },
   {
-    x: 20,
-    y: 20,
+    x: 20000,
+    y: 76,
     z: 30, // set the size of the second country bubble
   },
   {
-    x: 30,
-    y: 30,
+    x: 80000,
+    y: 80,
     z: 50, // set the size of the third country bubble
   },
 ];
@@ -44,6 +44,21 @@ const options = {
       data: getOriginalData(),
     },
   ],
+  xAxis: {
+    type: "logarithmic",
+    min: 1000,
+    max: 120000,
+  },
+  yAxis: {
+    startOnTick: false,
+
+    endOnTick: false,
+    title: {
+      text: "Life expectancy in 2019, year",
+    },
+
+    maxPadding: 0.2,
+  },
 };
 //
 const BubbleChartVersion2 = () => {
@@ -56,7 +71,7 @@ const BubbleChartVersion2 = () => {
 
   const handleClick = () => {
     chart.series[0].update({ name: "Countries" });
-    chart.series[0].setData(getAlternativeData());
+    chart.series[0].setData(getAlternativeData(), [true], [{ duration: 2000 }]);
   };
 
   return (
