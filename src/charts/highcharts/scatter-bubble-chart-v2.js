@@ -12,6 +12,16 @@ const getOriginalData = () => [
     y: 60,
     z: 100, // set the size of the bubble
   },
+  {
+    x: 9500,
+    y: 69,
+    z: 80, // set the size of the bubble
+  },
+  {
+    x: 65000,
+    y: 45,
+    z: 70, // set the size of the bubble
+  },
 ];
 const getAlternativeData = () => [
   {
@@ -71,7 +81,7 @@ const BubbleChartVersion2 = () => {
 
   const handleClick = () => {
     chart.series[0].update({ name: "Countries" });
-    chart.series[0].setData(getAlternativeData(), [true], [{ duration: 2000 }]);
+    chart.series[0].setData(getAlternativeData());
   };
 
   return (
