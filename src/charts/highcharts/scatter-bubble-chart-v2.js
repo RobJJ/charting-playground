@@ -67,7 +67,26 @@ const BubbleChartVersion2 = () => {
   const [chartOptions, setChartOptions] = useState({
     chart: {
       type: "bubble",
-      events: {},
+      events: {
+        redraw: function () {
+          var label = this.renderer
+            .label("A series was added, about to redraw chart", 100, 120)
+            .attr({
+              fill: Highcharts.getOptions().colors[0],
+              padding: 10,
+              r: 5,
+              zIndex: 8,
+            })
+            .css({
+              color: "#FFFFFF",
+            })
+            .add();
+
+          setTimeout(function () {
+            label.fadeOut();
+          }, 1000);
+        },
+      },
     },
     tooltip: {
       enabled: false,
