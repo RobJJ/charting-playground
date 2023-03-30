@@ -36,7 +36,7 @@ const getAlternativeData = () => [
 const BubbleChartVersion2 = () => {
   console.log("---- BUBBLE CHART COMP ----");
   // const chartRef = useRef(null);
-  const [chart, setChart] = useState(null);
+  // const [chart, setChart] = useState(null);
   const options = {
     chart: {
       type: "bubble",
@@ -75,8 +75,8 @@ const BubbleChartVersion2 = () => {
   // }, []);
 
   const handleClick = () => {
-    chart.series[0].update({ name: "Countries" });
-    chart.series[0].setData(getAlternativeData());
+    // chart.series[0].update({ name: "Countries" });
+    // chart.series[0].setData(getAlternativeData());
   };
 
   return (
@@ -87,7 +87,9 @@ const BubbleChartVersion2 = () => {
         highcharts={Highcharts}
         options={options}
       />
-      <button onClick={handleClick}>Break up into countries</button>
+      <button className="bg-white rounded-xl mt-2 p-1" onClick={handleClick}>
+        Break up into countries
+      </button>
     </div>
   );
 };
