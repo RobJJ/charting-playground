@@ -8,19 +8,9 @@ HC_more(Highcharts);
 //
 const getOriginalData = () => [
   {
-    x: 4500,
+    x: 12000,
     y: 60,
-    z: 100, // set the size of the bubble
-  },
-  {
-    x: 9500,
-    y: 69,
-    z: 80, // set the size of the bubble
-  },
-  {
-    x: 65000,
-    y: 45,
-    z: 70, // set the size of the bubble
+    z: 200, // set the size of the bubble
   },
 ];
 const getAlternativeData = () => [
@@ -41,43 +31,48 @@ const getAlternativeData = () => [
   },
 ];
 //
-const options = {
-  chart: {
-    type: "bubble",
-    animation: {
-      duration: 2000, // set the duration of the animation in milliseconds
-    },
-  },
-  series: [
-    {
-      name: "World",
-      data: getOriginalData(),
-    },
-  ],
-  xAxis: {
-    type: "logarithmic",
-    min: 1000,
-    max: 120000,
-  },
-  yAxis: {
-    startOnTick: false,
 
-    endOnTick: false,
-    title: {
-      text: "Life expectancy in 2019, year",
-    },
-
-    maxPadding: 0.2,
-  },
-};
 //
 const BubbleChartVersion2 = () => {
-  const chartRef = useRef(null);
+  console.log("---- BUBBLE CHART COMP ----");
+  // const chartRef = useRef(null);
   const [chart, setChart] = useState(null);
+  const options = {
+    chart: {
+      type: "bubble",
+      animation: {
+        duration: 2000, // set the duration of the animation in milliseconds
+      },
+    },
+    accessibility: {
+      enabled: false,
+    },
+    series: [
+      {
+        name: "World",
+        data: getOriginalData(),
+      },
+    ],
+    xAxis: {
+      type: "logarithmic",
+      min: 1000,
+      max: 120000,
+    },
+    yAxis: {
+      startOnTick: false,
+      endOnTick: false,
+      title: {
+        text: "Life expectancy in 2019, year",
+      },
+      maxPadding: 0.2,
+      min: 30,
+      max: 100,
+    },
+  };
 
-  useEffect(() => {
-    setChart(Highcharts.chart(chartRef.current, options));
-  }, []);
+  // useEffect(() => {
+  //   setChart(Highcharts.chart(chartRef.current, options));
+  // }, []);
 
   const handleClick = () => {
     chart.series[0].update({ name: "Countries" });
@@ -86,7 +81,12 @@ const BubbleChartVersion2 = () => {
 
   return (
     <div>
-      <div ref={chartRef} />
+      {/*<div ref={chartRef} />*/}
+      <HighchartsReact
+        // ref={chartRef}
+        highcharts={Highcharts}
+        options={options}
+      />
       <button onClick={handleClick}>Break up into countries</button>
     </div>
   );
