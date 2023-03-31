@@ -68,7 +68,8 @@ const BubbleChartVersion2 = () => {
     chart: {
       type: "bubble",
       events: {
-        redraw: function () {
+        redraw: function (event) {
+          console.log(event);
           var label = this.renderer
             .label("A series was added, about to redraw chart", 100, 120)
             .attr({
