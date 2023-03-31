@@ -68,8 +68,8 @@ const BubbleChartVersion2 = () => {
     chart: {
       type: "bubble",
       events: {
-        load: function (e) {
-          console.log(this.options);
+        redraw: function (e) {
+          console.log("this.series[0].points[0] : ", this.series[0].points[0]);
           var label = this.renderer
             .label("A series was added, about to redraw chart", 100, 120)
             .attr({
@@ -85,7 +85,7 @@ const BubbleChartVersion2 = () => {
 
           setTimeout(function () {
             label.fadeOut();
-          }, 1000);
+          }, 2000);
         },
       },
     },
@@ -125,7 +125,7 @@ const BubbleChartVersion2 = () => {
     ],
   });
 
-  console.log("chartOptions: ", chartOptions);
+  // console.log("chartOptions: ", chartOptions);
 
   const handleClickPls = () => {
     setChartOptions({
