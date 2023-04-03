@@ -48,13 +48,6 @@ const BubbleChartVersion2 = () => {
       color: "#BADA55",
     },
     {
-      id: "au",
-      x: 8,
-      y: 9,
-      z: 5,
-      name: "Australia",
-    },
-    {
       id: "no",
       x: 4,
       y: 8,
@@ -112,36 +105,6 @@ const BubbleChartVersion2 = () => {
         load: function () {
           chart = this;
         },
-        redraw: function (e) {
-          // console.log("this.series[0].points[0] : ", this.series[0].points[0]);
-          const series = this.series[0];
-          const parent = series.points[0];
-
-          pointsToAdd.forEach((point, idx) => {
-            series.addPoint(point, false);
-            console.log(`Point ${idx} : `, point);
-          });
-
-          const allPoints = series.points;
-          console.log("All Points at the moment : ", allPoints);
-
-          var label = this.renderer
-            .label("A series was added, about to redraw chart", 100, 120)
-            .attr({
-              fill: Highcharts.getOptions().colors[0],
-              padding: 10,
-              r: 5,
-              zIndex: 8,
-            })
-            .css({
-              color: "#FFFFFF",
-            })
-            .add();
-
-          setTimeout(function () {
-            label.fadeOut();
-          }, 2000);
-        },
       },
     },
     tooltip: {
@@ -159,14 +122,7 @@ const BubbleChartVersion2 = () => {
       {
         zMin: 0,
         zMax: 20,
-        data: [
-          {
-            x: 5,
-            y: 5,
-            z: 19,
-            name: "Europe",
-          },
-        ],
+        data: data.filter((point) => !point.parent),
         states: {
           hover: {
             enabled: false,
@@ -176,10 +132,93 @@ const BubbleChartVersion2 = () => {
           enabled: true,
           format: "{point.name}",
         },
+        cursor: "pointer",
+        point: {
+          events: {
+            click: function () {
+              const point = this,
+                series = point.series;
+
+              if (
+                data.find((p) => p.parent === point.id) &&
+                !series.points.find((p) => p.parent === point.id)
+              ) {
+                splitPoint(point);
+              } else if (point.parent) {
+                collapsePoint(point);
+              }
+            },
+          },
+        },
       },
     ],
   });
+  //
+  const splitPoint = (point) => {
+    const series = point.series,
+      pointsToAdd = data.filter((p) => p.parent === point.id),
+      parent = point;
 
+    pointsToAdd.forEach((d) => {
+      series.addPoint(d);
+      const child = series.points.find((p) => p.id === d.id),
+        r = child.marker.height / 2,
+        { plotX, plotY } = child;
+
+      child.dataLabel.attr({
+        opacity: 0,
+      });
+      child.graphic.attr({
+        x: parent.plotX - r,
+        y: parent.plotY - r,
+      });
+      child.graphic.animate({
+        x: plotX - r,
+        y: plotY - r,
+      });
+      child.dataLabel.animate({
+        opacity: 1,
+      });
+
+      parent.graphic.animate({
+        opacity: 0,
+      });
+      parent.dataLabel.animate(
+        {
+          opacity: 0,
+        },
+        undefined,
+        () => parent.remove()
+      );
+    });
+  };
+  //
+  const collapsePoint = (point) => {
+    const series = point.series,
+      pointsToRemove = series.points.filter((p) => p.parent === point.parent);
+
+    series.addPoint(data.find((p) => p.id === point.parent));
+
+    const parent = series.points.find((p) => point.parent === p.id),
+      { plotX, plotY } = parent;
+
+    pointsToRemove.forEach((p) => {
+      p.remove();
+    });
+
+    parent.graphic.attr({
+      opacity: 0,
+    });
+    parent.dataLabel.attr({
+      opacity: 0,
+    });
+    parent.graphic.animate({
+      opacity: 1,
+    });
+    parent.dataLabel.animate({
+      opacity: 1,
+    });
+  };
   // console.log("chartOptions: ", chartOptions);
 
   const handleClickPls = () => {
@@ -250,3 +289,35 @@ export default BubbleChartVersion2;
 // useEffect(() => {
 //   setChart(Highcharts.chart(chartRef.current, options));
 // }, []);
+
+// redraw function
+// redraw: function (e) {
+//           // console.log("this.series[0].points[0] : ", this.series[0].points[0]);
+//           const series = this.series[0];
+//           const parent = series.points[0];
+
+//           pointsToAdd.forEach((point, idx) => {
+//             series.addPoint(point, false);
+//             console.log(`Point ${idx} : `, point);
+//           });
+
+//           const allPoints = series.points;
+//           console.log("All Points at the moment : ", allPoints);
+
+//           var label = this.renderer
+//             .label("A series was added, about to redraw chart", 100, 120)
+//             .attr({
+//               fill: Highcharts.getOptions().colors[0],
+//               padding: 10,
+//               r: 5,
+//               zIndex: 8,
+//             })
+//             .css({
+//               color: "#FFFFFF",
+//             })
+//             .add();
+
+//           setTimeout(function () {
+//             label.fadeOut();
+//           }, 2000);
+//         },
