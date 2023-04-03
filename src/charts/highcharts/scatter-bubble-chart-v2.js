@@ -38,30 +38,70 @@ const getAlternativeData = () => [
 const BubbleChartVersion2 = () => {
   console.log("---- BUBBLE CHART COMP ----");
   let chart;
-  const [pointsToAdd, setPointsToAdd] = useState([
+  const [data, setData] = useState([
     {
+      id: "eu",
+      x: 5,
+      y: 5,
+      z: 19,
+      name: "Europe",
+      color: "#BADA55",
+    },
+    {
+      id: "au",
+      x: 8,
+      y: 9,
+      z: 5,
+      name: "Australia",
+    },
+    {
+      id: "no",
       x: 4,
       y: 8,
       z: 3,
       name: "Norway",
+      parent: "eu",
     },
     {
+      id: "pl",
       x: 6,
       y: 5,
       z: 5,
       name: "Poland",
+      parent: "eu",
     },
     {
+      id: "blt",
       x: 2,
       y: 2,
       z: 4,
-      name: "Estonia",
+      name: "Baltics",
+      parent: "eu",
+      color: "#BADA55",
     },
     {
+      id: "it",
       x: 2,
       y: 7,
       z: 7,
       name: "Italy",
+      parent: "eu",
+    },
+    {
+      id: "lt",
+      x: 1,
+      y: 1,
+      z: 1,
+      name: "Lithuania",
+      parent: "blt",
+    },
+    {
+      id: "lv",
+      x: 1,
+      y: 2,
+      z: 1,
+      name: "Latvia",
+      parent: "blt",
     },
   ]);
 
