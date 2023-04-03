@@ -37,6 +37,7 @@ const getAlternativeData = () => [
 //
 const BubbleChartVersion2 = () => {
   console.log("---- BUBBLE CHART COMP ----");
+  let chart;
   const [pointsToAdd, setPointsToAdd] = useState([
     {
       x: 4,
@@ -68,8 +69,22 @@ const BubbleChartVersion2 = () => {
     chart: {
       type: "bubble",
       events: {
+        load: function () {
+          chart = this;
+        },
         redraw: function (e) {
-          console.log("this.series[0].points[0] : ", this.series[0].points[0]);
+          // console.log("this.series[0].points[0] : ", this.series[0].points[0]);
+          const series = this.series[0];
+          const parent = series.points[0];
+
+          pointsToAdd.forEach((point, idx) => {
+            series.addPoint(point, false);
+            console.log(`Point ${idx} : `, point);
+          });
+
+          const allPoints = series.points;
+          console.log("All Points at the moment : ", allPoints);
+
           var label = this.renderer
             .label("A series was added, about to redraw chart", 100, 120)
             .attr({

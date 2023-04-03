@@ -1,7 +1,7 @@
 import React from "react";
 import BubbleChartVersion2 from "./charts/highcharts/scatter-bubble-chart-v2";
 
-import HighchartsPage from "./pages/highcharts-page";
+// import HighchartsPage from "./pages/highcharts-page";
 // import BubbleChart from "./charts/highcharts/scatter-bubble-chart";
 // import Toggle from "./charts/highcharts/toggle";
 
