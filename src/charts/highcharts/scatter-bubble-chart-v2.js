@@ -122,6 +122,7 @@ const BubbleChartVersion2 = () => {
       {
         zMin: 0,
         zMax: 20,
+        // start with points that dont have parent
         data: data.filter((point) => !point.parent),
         states: {
           hover: {
@@ -138,8 +139,11 @@ const BubbleChartVersion2 = () => {
             click: function () {
               const point = this,
                 series = point.series;
+              console.log("printing point (this) : ", point);
+              console.log("printing series (this) : ", series);
 
               if (
+                // check if there are children available
                 data.find((p) => p.parent === point.id) &&
                 !series.points.find((p) => p.parent === point.id)
               ) {
