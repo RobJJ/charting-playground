@@ -234,12 +234,15 @@ const BubbleChartVersion2 = () => {
     const series = chart.series[0],
       europePoint = series.points.find((p) => p.id === "eu"),
       polandPoint = series.points.find((p) => p.id === "pl"),
-      balticsPoint = series.points.find((p) => p.id === "blt");
+      balticsPoint = series.points.find((p) => p.id === "blt"),
+      balticsChildren = series.points.find((p) => p.parent === "blt");
 
     if (europePoint) {
       splitPoint(europePoint);
     } else if (balticsPoint) {
       splitPoint(balticsPoint);
+    } else if (balticsChildren) {
+      collapsePoint(balticsChildren);
     } else {
       collapsePoint(polandPoint);
     }
