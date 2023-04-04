@@ -248,6 +248,9 @@ const BubbleChartVersion2 = () => {
     }
   };
 
+  const splitButtonHandler = () => {};
+  const absorbButtonHandler = () => {};
+
   return (
     <div>
       {/*<div ref={chartRef} />*/}
@@ -264,7 +267,13 @@ const BubbleChartVersion2 = () => {
           className="bg-white rounded-xl  p-1"
           onClick={toggleButtonHandler}
         >
-          Toggle Europe
+          Split
+        </button>
+        <button
+          className="bg-white rounded-xl  p-1"
+          onClick={toggleButtonHandler}
+        >
+          Absorb
         </button>
       </div>
     </div>
