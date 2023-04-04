@@ -108,7 +108,25 @@ const BubbleChartVersion2 = () => {
       },
     },
     tooltip: {
-      enabled: false,
+      // enabled: false,
+      useHTML: true,
+      headerFormat: "<table>",
+      pointFormat:
+        '<tr><th colspan="2"><h3><u>{point.name}</u></h3></th></tr>' +
+        "<tr><th>GDP per capita:</th><td>$ {point.x}</td></tr>" +
+        "<tr><th>Life Expectancy:</th><td>{point.y} years</td></tr>" +
+        "<tr><th>Population:</th><td>{point.z}</td></tr>",
+      followPointer: true,
+      hideDelay: 0,
+    },
+    plotOptions: {
+      // general options for all series
+      series: {
+        // removes lingering tooltip
+        stickyTracking: false,
+        // Assign a unique color to each point in the series
+        colorByPoint: true,
+      },
     },
     xAxis: {
       min: 0,
@@ -231,6 +249,7 @@ const BubbleChartVersion2 = () => {
   };
 
   const splitButtonHandler = () => {
+    //might need to add handler for if series is underfined
     const series = chart.series[0],
       europePoint = series.points.find((p) => p.id === "eu"),
       balticsPoint = series.points.find((p) => p.id === "blt");
@@ -239,6 +258,7 @@ const BubbleChartVersion2 = () => {
     if (balticsPoint) splitPoint(balticsPoint);
   };
   const absorbButtonHandler = () => {
+    //might need to add handler for if series is underfined
     const series = chart.series[0],
       europeChildren = series.points.find((p) => p.parent === "eu"),
       balticChildren = series.points.find((p) => p.parent === "blt");
