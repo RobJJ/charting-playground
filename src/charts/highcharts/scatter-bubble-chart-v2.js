@@ -248,7 +248,14 @@ const BubbleChartVersion2 = () => {
     }
   };
 
-  const splitButtonHandler = () => {};
+  const splitButtonHandler = () => {
+    const series = chart.series[0],
+      europePoint = series.points.find((p) => p.id === "eu"),
+      balticsPoint = series.points.find((p) => p.id === "blt");
+
+    if (europePoint) splitPoint(europePoint);
+    if (balticsPoint) splitPoint(balticsPoint);
+  };
   const absorbButtonHandler = () => {};
 
   return (
@@ -265,13 +272,13 @@ const BubbleChartVersion2 = () => {
         </button>
         <button
           className="bg-white rounded-xl  p-1"
-          onClick={toggleButtonHandler}
+          onClick={splitButtonHandler}
         >
           Split
         </button>
         <button
           className="bg-white rounded-xl  p-1"
-          onClick={toggleButtonHandler}
+          onClick={absorbButtonHandler}
         >
           Absorb
         </button>
