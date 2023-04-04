@@ -242,6 +242,10 @@ const BubbleChartVersion2 = () => {
       followPointer: true,
       hideDelay: 0,
     },
+    title: {
+      // text: _.startCase(`Experimal build: Highchart: ${type} chart`),
+      text: `Experimental build - HighCharts - Bubble chart`,
+    },
     legend: {
       enabled: false,
     },
@@ -254,10 +258,10 @@ const BubbleChartVersion2 = () => {
         colorByPoint: true,
       },
       bubble: {
-        // minSize: "10%",
-        // maxSize: "50%",
-        // zMin: 0,
-        // zMax: 1000000000,
+        minSize: "10%",
+        maxSize: "50%",
+        zMin: 0,
+        zMax: 1000000000,
       },
     },
     xAxis: {
@@ -284,8 +288,8 @@ const BubbleChartVersion2 = () => {
 
     series: [
       {
-        minSize: "2%",
-        maxSize: "50%",
+        // minSize: "2%",
+        // maxSize: "50%",
         // start with points that dont have parent
         data: data.filter((point) => !point.parent),
         states: {
