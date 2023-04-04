@@ -254,9 +254,10 @@ const BubbleChartVersion2 = () => {
         colorByPoint: true,
       },
       bubble: {
-        zMin: 1,
-        zMax: 50,
-        sizeBy: "area",
+        // minSize: "10%",
+        // maxSize: "50%",
+        // zMin: 0,
+        // zMax: 1000000000,
       },
     },
     xAxis: {
@@ -283,8 +284,8 @@ const BubbleChartVersion2 = () => {
 
     series: [
       {
-        zMin: 0,
-        zMax: 20,
+        minSize: "2%",
+        maxSize: "50%",
         // start with points that dont have parent
         data: data.filter((point) => !point.parent),
         states: {
