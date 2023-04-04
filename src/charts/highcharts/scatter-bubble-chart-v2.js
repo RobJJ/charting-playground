@@ -225,10 +225,24 @@ const BubbleChartVersion2 = () => {
   };
   // console.log("chartOptions: ", chartOptions);
 
-  const handleClickPls = () => {
-    setChartOptions({
-      series: [{ data: getAlternativeData() }],
-    });
+  const logInfo = () => {
+    console.log("Current Chart options: ", chartOptions);
+    console.log("Chart: ", chart);
+  };
+
+  const toggleButtonHandler = () => {
+    const series = chart.series[0],
+      europePoint = series.points.find((p) => p.id === "eu"),
+      polandPoint = series.points.find((p) => p.id === "pl"),
+      balticsPoint = series.points.find((p) => p.id === "blt");
+
+    if (europePoint) {
+      splitPoint(europePoint);
+    } else if (balticsPoint) {
+      splitPoint(balticsPoint);
+    } else {
+      collapsePoint(polandPoint);
+    }
   };
 
   return (
@@ -239,9 +253,17 @@ const BubbleChartVersion2 = () => {
         highcharts={Highcharts}
         options={chartOptions}
       />
-      <button className="bg-white rounded-xl mt-2 p-1" onClick={handleClickPls}>
-        Break up into countries
-      </button>
+      <div className="flex mt-2 gap-2">
+        <button className="bg-white rounded-xl  p-1" onClick={logInfo}>
+          Log Info
+        </button>
+        <button
+          className="bg-white rounded-xl  p-1"
+          onClick={toggleButtonHandler}
+        >
+          Toggle Europe
+        </button>
+      </div>
     </div>
   );
 };
