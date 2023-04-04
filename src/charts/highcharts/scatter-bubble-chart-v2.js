@@ -230,24 +230,6 @@ const BubbleChartVersion2 = () => {
     console.log("Chart: ", chart);
   };
 
-  const toggleButtonHandler = () => {
-    const series = chart.series[0],
-      europePoint = series.points.find((p) => p.id === "eu"),
-      polandPoint = series.points.find((p) => p.id === "pl"),
-      balticsPoint = series.points.find((p) => p.id === "blt"),
-      balticsChildren = series.points.find((p) => p.parent === "blt");
-
-    if (europePoint) {
-      splitPoint(europePoint);
-    } else if (balticsPoint) {
-      splitPoint(balticsPoint);
-    } else if (balticsChildren) {
-      collapsePoint(balticsChildren);
-    } else {
-      collapsePoint(polandPoint);
-    }
-  };
-
   const splitButtonHandler = () => {
     const series = chart.series[0],
       europePoint = series.points.find((p) => p.id === "eu"),
@@ -256,7 +238,17 @@ const BubbleChartVersion2 = () => {
     if (europePoint) splitPoint(europePoint);
     if (balticsPoint) splitPoint(balticsPoint);
   };
-  const absorbButtonHandler = () => {};
+  const absorbButtonHandler = () => {
+    const series = chart.series[0],
+      europeChildren = series.points.find((p) => p.parent === "eu"),
+      balticChildren = series.points.find((p) => p.parent === "blt");
+
+    if (balticChildren) {
+      collapsePoint(balticChildren);
+    } else if (europeChildren) {
+      collapsePoint(europeChildren);
+    }
+  };
 
   return (
     <div>
