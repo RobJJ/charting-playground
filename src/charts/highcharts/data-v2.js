@@ -22,18 +22,18 @@ export const worldData = [
     name: "Africa",
     color: "#FFA500", // unique color for Africa
   },
-  {
-    id: "an",
-    parent: "world",
-    lifeExpectancy: 75.0,
-    gdpPerCapita: 0,
-    population: 1100,
-    x: 0,
-    y: 75.0,
-    z: 1100,
-    name: "Antarctica",
-    color: "#4169E1", // unique color for Antarctica
-  },
+  //   {
+  //     id: "an",
+  //     parent: "world",
+  //     lifeExpectancy: 75.0,
+  //     gdpPerCapita: 0,
+  //     population: 1100,
+  //     x: 0,
+  //     y: 75.0,
+  //     z: 1100,
+  //     name: "Antarctica",
+  //     color: "#4169E1", // unique color for Antarctica
+  //   },
   {
     id: "as",
     parent: "world",

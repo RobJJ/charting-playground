@@ -283,11 +283,11 @@ const BubbleChartVersion2 = () => {
       {
         // start with points that dont have parent
         data: data.filter((point) => !point.parent),
-        // states: {
-        //   hover: {
-        //     enabled: false,
-        //   },
-        // },
+        states: {
+          hover: {
+            enabled: false,
+          },
+        },
         dataLabels: {
           enabled: true,
           format: "{point.name}",
@@ -299,22 +299,21 @@ const BubbleChartVersion2 = () => {
         cursor: "pointer",
         point: {
           events: {
-            click: function () {
-              const point = this,
-                series = point.series;
-              console.log("printing point (this) : ", point);
-              console.log("printing series (this) : ", series);
-
-              if (
-                // check if there are children available
-                data.find((p) => p.parent === point.id) &&
-                !series.points.find((p) => p.parent === point.id)
-              ) {
-                splitPoint(point);
-              } else if (point.parent) {
-                collapsePoint(point);
-              }
-            },
+            // click: function () {
+            //   const point = this,
+            //     series = point.series;
+            //   console.log("printing point (this) : ", point);
+            //   console.log("printing series (this) : ", series);
+            //   if (
+            //     // check if there are children available
+            //     data.find((p) => p.parent === point.id) &&
+            //     !series.points.find((p) => p.parent === point.id)
+            //   ) {
+            //     splitPoint(point);
+            //   } else if (point.parent) {
+            //     collapsePoint(point);
+            //   }
+            // },
           },
         },
       },
@@ -331,6 +330,8 @@ const BubbleChartVersion2 = () => {
       const child = series.points.find((p) => p.id === d.id),
         r = child.marker.height / 2,
         { plotX, plotY } = child;
+
+      console.log("child?? : ", child);
 
       child.dataLabel.attr({
         opacity: 0,
@@ -396,23 +397,26 @@ const BubbleChartVersion2 = () => {
   const splitButtonHandler = () => {
     //might need to add handler for if series is underfined
     const series = chart.series[0],
-      europePoint = series.points.find((p) => p.id === "eu"),
-      balticsPoint = series.points.find((p) => p.id === "blt");
-
-    if (europePoint) splitPoint(europePoint);
-    if (balticsPoint) splitPoint(balticsPoint);
+      worldPoint = series.points.find((p) => p.id === "world");
+    // console.log("world Point: ", worldPoint);
+    // europePoint = series.points.find((p) => p.id === "eu"),
+    // balticsPoint = series.points.find((p) => p.id === "blt");
+    if (worldPoint) splitPoint(worldPoint);
+    // if (europePoint) splitPoint(europePoint);
+    // if (balticsPoint) splitPoint(balticsPoint);
   };
   const absorbButtonHandler = () => {
     //might need to add handler for if series is underfined
     const series = chart.series[0],
-      europeChildren = series.points.find((p) => p.parent === "eu"),
-      balticChildren = series.points.find((p) => p.parent === "blt");
-
-    if (balticChildren) {
-      collapsePoint(balticChildren);
-    } else if (europeChildren) {
-      collapsePoint(europeChildren);
-    }
+      worldChildren = series.points.find((p) => p.parent === "world");
+    // europeChildren = series.points.find((p) => p.parent === "eu"),
+    // balticChildren = series.points.find((p) => p.parent === "blt");
+    if (worldChildren) collapsePoint(worldChildren);
+    // if (balticChildren) {
+    //   collapsePoint(balticChildren);
+    // } else if (europeChildren) {
+    //   collapsePoint(europeChildren);
+    // }
   };
 
   return (
