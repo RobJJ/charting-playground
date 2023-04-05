@@ -331,7 +331,7 @@ const BubbleChartVersion2 = () => {
         r = child.marker.height / 2,
         { plotX, plotY } = child;
 
-      console.log("child?? : ", child);
+      // console.log("child?? : ", child);
 
       child.dataLabel.attr({
         opacity: 0,
