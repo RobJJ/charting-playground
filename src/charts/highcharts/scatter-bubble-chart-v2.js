@@ -249,6 +249,9 @@ const BubbleChartVersion2 = () => {
     legend: {
       enabled: false,
     },
+    credits: {
+      enabled: false,
+    },
     plotOptions: {
       // general options for all series
       series: {
@@ -285,21 +288,35 @@ const BubbleChartVersion2 = () => {
       endOnTick: false,
       maxPadding: 0.2,
     },
-
+    // colors: [
+    //   "#058DC7",
+    //   "#50B432",
+    //   "#ED561B",
+    //   "#DDDF00",
+    //   "#f15c80",
+    //   "#2b908f",
+    //   "#FF9655",
+    //   "#FFF263",
+    //   "#6AF9C4",
+    //   "#8085e9",
+    // ],
     series: [
       {
-        // minSize: "2%",
-        // maxSize: "50%",
         // start with points that dont have parent
         data: data.filter((point) => !point.parent),
-        states: {
-          hover: {
-            enabled: false,
-          },
-        },
+        opacity: 1,
+        // states: {
+        //   hover: {
+        //     enabled: false,
+        //   },
+        // },
         dataLabels: {
           enabled: true,
           format: "{point.name}",
+        },
+        marker: {
+          fillOpacity: 1,
+          lineColor: "white",
         },
         cursor: "pointer",
         point: {
