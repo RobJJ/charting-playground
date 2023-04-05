@@ -3,35 +3,13 @@ import React, { useRef, useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
+import { worldData } from "./data-v2";
+
 // import HC_more from "highcharts/highcharts-more";
 import highchartsMore from "highcharts/highcharts-more";
 
 highchartsMore(Highcharts);
 //
-const getOriginalData = () => [
-  {
-    x: 12000,
-    y: 60,
-    z: 200, // set the size of the bubble
-  },
-];
-const getAlternativeData = () => [
-  {
-    x: 2,
-    y: 1,
-    z: 5, // set the size of the first country bubble
-  },
-  {
-    x: 3,
-    y: 6,
-    z: 8, // set the size of the second country bubble
-  },
-  {
-    x: 4,
-    y: 8,
-    z: 2, // set the size of the third country bubble
-  },
-];
 //
 
 //
@@ -97,130 +75,131 @@ const BubbleChartVersion2 = () => {
   //     parent: "blt",
   //   },
   // ]);
-  const [data, setData] = useState([
-    {
-      id: "eu",
-      lifeExpectancy: 81.5, // Average life expectancy of European countries
-      gdpPerCapita: 36000, // Approximate average GDP per capita of European countries
-      population: 500000000, // Approximate total population of European countries
-      x: 36000,
-      y: 81.5,
-      z: 500000000,
-      name: "Europe",
-      color: "#BADA55",
-    },
-    {
-      id: "no",
-      gdpPerCapita: 53267,
-      population: 5391369,
-      lifeExpectancy: 82.3,
-      x: 53267,
-      y: 82.3,
-      z: 5391369,
-      name: "Norway",
-      parent: "eu",
-    },
-    {
-      id: "se",
-      gdpPerCapita: 50412,
-      population: 10327589,
-      lifeExpectancy: 82.2,
-      x: 50412,
-      y: 82.2,
-      z: 10327589,
-      name: "Sweden",
-      parent: "eu",
-    },
-    {
-      id: "ch",
-      gdpPerCapita: 83029,
-      population: 8574832,
-      lifeExpectancy: 83.1,
-      x: 83029,
-      y: 83.1,
-      z: 8574832,
-      name: "Switzerland",
-      parent: "eu",
-    },
-    {
-      id: "fi",
-      gdpPerCapita: 50311,
-      population: 5501043,
-      lifeExpectancy: 81.7,
-      x: 50311,
-      y: 81.7,
-      z: 5501043,
-      name: "Finland",
-      parent: "eu",
-    },
-    {
-      id: "dk",
-      gdpPerCapita: 61740,
-      population: 5814461,
-      lifeExpectancy: 81.0,
-      x: 61740,
-      y: 81.0,
-      z: 5814461,
-      name: "Denmark",
-      parent: "eu",
-    },
-    {
-      id: "fr",
-      gdpPerCapita: 40494,
-      population: 65480710,
-      lifeExpectancy: 82.3,
-      x: 40494,
-      y: 82.3,
-      z: 65480710,
-      name: "France",
-      parent: "eu",
-    },
-    {
-      id: "de",
-      gdpPerCapita: 47917,
-      population: 83019213,
-      lifeExpectancy: 80.9,
-      x: 47917,
-      y: 80.9,
-      z: 83019213,
-      name: "Germany",
-      parent: "eu",
-    },
-    {
-      id: "it",
-      gdpPerCapita: 34483,
-      population: 60243453,
-      lifeExpectancy: 82.0,
-      x: 34483,
-      y: 82.0,
-      z: 60243453,
-      name: "Italy",
-      parent: "eu",
-    },
-    {
-      id: "nl",
-      gdpPerCapita: 52516,
-      population: 17421209,
-      lifeExpectancy: 81.6,
-      x: 52516,
-      y: 81.6,
-      z: 17421209,
-      name: "Netherlands",
-      parent: "eu",
-    },
-    {
-      id: "es",
-      gdpPerCapita: 27430,
-      population: 46934632,
-      lifeExpectancy: 83.0,
-      x: 27430,
-      y: 83.0,
-      z: 46934632,
-      name: "Spain",
-      parent: "eu",
-    },
-  ]);
+  // const [data, setData] = useState([
+  //   {
+  //     id: "eu",
+  //     lifeExpectancy: 81.5, // Average life expectancy of European countries
+  //     gdpPerCapita: 36000, // Approximate average GDP per capita of European countries
+  //     population: 500000000, // Approximate total population of European countries
+  //     x: 36000,
+  //     y: 81.5,
+  //     z: 500000000,
+  //     name: "Europe",
+  //     color: "#BADA55",
+  //   },
+  //   {
+  //     id: "no",
+  //     gdpPerCapita: 53267,
+  //     population: 5391369,
+  //     lifeExpectancy: 82.3,
+  //     x: 53267,
+  //     y: 82.3,
+  //     z: 5391369,
+  //     name: "Norway",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "se",
+  //     gdpPerCapita: 50412,
+  //     population: 10327589,
+  //     lifeExpectancy: 82.2,
+  //     x: 50412,
+  //     y: 82.2,
+  //     z: 10327589,
+  //     name: "Sweden",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "ch",
+  //     gdpPerCapita: 83029,
+  //     population: 8574832,
+  //     lifeExpectancy: 83.1,
+  //     x: 83029,
+  //     y: 83.1,
+  //     z: 8574832,
+  //     name: "Switzerland",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "fi",
+  //     gdpPerCapita: 50311,
+  //     population: 5501043,
+  //     lifeExpectancy: 81.7,
+  //     x: 50311,
+  //     y: 81.7,
+  //     z: 5501043,
+  //     name: "Finland",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "dk",
+  //     gdpPerCapita: 61740,
+  //     population: 5814461,
+  //     lifeExpectancy: 81.0,
+  //     x: 61740,
+  //     y: 81.0,
+  //     z: 5814461,
+  //     name: "Denmark",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "fr",
+  //     gdpPerCapita: 40494,
+  //     population: 65480710,
+  //     lifeExpectancy: 82.3,
+  //     x: 40494,
+  //     y: 82.3,
+  //     z: 65480710,
+  //     name: "France",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "de",
+  //     gdpPerCapita: 47917,
+  //     population: 83019213,
+  //     lifeExpectancy: 80.9,
+  //     x: 47917,
+  //     y: 80.9,
+  //     z: 83019213,
+  //     name: "Germany",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "it",
+  //     gdpPerCapita: 34483,
+  //     population: 60243453,
+  //     lifeExpectancy: 82.0,
+  //     x: 34483,
+  //     y: 82.0,
+  //     z: 60243453,
+  //     name: "Italy",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "nl",
+  //     gdpPerCapita: 52516,
+  //     population: 17421209,
+  //     lifeExpectancy: 81.6,
+  //     x: 52516,
+  //     y: 81.6,
+  //     z: 17421209,
+  //     name: "Netherlands",
+  //     parent: "eu",
+  //   },
+  //   {
+  //     id: "es",
+  //     gdpPerCapita: 27430,
+  //     population: 46934632,
+  //     lifeExpectancy: 83.0,
+  //     x: 27430,
+  //     y: 83.0,
+  //     z: 46934632,
+  //     name: "Spain",
+  //     parent: "eu",
+  //   },
+  // ]);
 
+  const [data, setData] = useState(worldData);
   const [chartOptions, setChartOptions] = useState({
     chart: {
       type: "bubble",
@@ -263,8 +242,8 @@ const BubbleChartVersion2 = () => {
       bubble: {
         minSize: "10%",
         maxSize: "50%",
-        zMin: 0,
-        zMax: 1000000000,
+        // zMin: 0,
+        // zMax: 1000000000,
       },
     },
     xAxis: {
@@ -272,7 +251,7 @@ const BubbleChartVersion2 = () => {
         text: "GDP per capita in 2019, log scale, $",
       },
       type: "logarithmic",
-      min: 1000,
+      min: 2000,
       max: 120000,
       startOnTick: false,
       endOnTick: false,
@@ -282,7 +261,7 @@ const BubbleChartVersion2 = () => {
       title: {
         text: "Life expectancy in 2019, year",
       },
-      min: 40,
+      min: 50,
       max: 100,
       startOnTick: false,
       endOnTick: false,
@@ -304,7 +283,6 @@ const BubbleChartVersion2 = () => {
       {
         // start with points that dont have parent
         data: data.filter((point) => !point.parent),
-        opacity: 1,
         // states: {
         //   hover: {
         //     enabled: false,
