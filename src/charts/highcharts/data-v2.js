@@ -20,7 +20,7 @@ export const worldData = [
     y: 64.7,
     z: 1300000000,
     name: "Africa",
-    color: "#FFA500", // unique color for Africa
+    color: "#78C8A4", // unique color for Africa
   },
   //   {
   //     id: "an",
@@ -44,7 +44,7 @@ export const worldData = [
     y: 72.1,
     z: 4600000000,
     name: "Asia",
-    color: "#800080", // unique color for Asia
+    color: "#CCCCFF", // unique color for Asia
   },
   {
     id: "eu",
@@ -56,7 +56,7 @@ export const worldData = [
     y: 81.5,
     z: 750000000,
     name: "Europe",
-    color: "#008000", // unique color for Europe
+    color: "#FF7F50", // unique color for Europe
   },
   {
     id: "na",
@@ -68,7 +68,7 @@ export const worldData = [
     y: 77.8,
     z: 590000000,
     name: "North America",
-    color: "#FF0000", // unique color for North America
+    color: "#FFCC99", // unique color for North America
   },
   {
     id: "oc",
@@ -80,7 +80,7 @@ export const worldData = [
     y: 66.7,
     z: 40000000,
     name: "Australia/Oceania",
-    color: "#FFFF00", // unique color for Australia/Oceania
+    color: "#99CCFF", // unique color for Australia/Oceania
   },
   {
     id: "sa",
@@ -92,6 +92,42 @@ export const worldData = [
     y: 75.7,
     z: 430000000,
     name: "South America",
-    color: "#FF00FF", // unique color for South America
+    color: "#CCFFCC", // unique color for South America
+  },
+  {
+    id: "argentina",
+    parent: "sa",
+    lifeExpectancy: 76.5,
+    gdpPerCapita: 16200,
+    population: 45000000,
+    x: 16200,
+    y: 76.5,
+    z: 45000000,
+    name: "Argentina",
+    color: "#CCFFCC", // same color as South America
+  },
+  {
+    id: "bolivia",
+    parent: "sa",
+    lifeExpectancy: 71.8,
+    gdpPerCapita: 7200,
+    population: 11000000,
+    x: 7200,
+    y: 71.8,
+    z: 11000000,
+    name: "Bolivia",
+    color: "#CCFFCC", // same color as South America
+  },
+  {
+    id: "brazil",
+    parent: "sa",
+    lifeExpectancy: 75.5,
+    gdpPerCapita: 9700,
+    population: 210000000,
+    x: 9700,
+    y: 75.5,
+    z: 210000000,
+    name: "Brazil",
+    color: "#CCFFCC", // same color as South America
   },
 ];
