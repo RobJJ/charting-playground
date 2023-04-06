@@ -9,7 +9,7 @@ function App() {
   console.log("---- APP JS ----");
   return (
     <div className="#F5F5F5 w-screen h-screen flex justify-center items-center">
-      <div className="bg-white w-2/3 h-2/3 p-5">
+      <div className="bg-red-400 w-1/3 h-2/3 p-5">
         <BubbleChartVersion2 />
       </div>
     </div>

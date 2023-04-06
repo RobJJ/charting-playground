@@ -420,12 +420,13 @@ const BubbleChartVersion2 = () => {
   };
 
   return (
-    <div>
+    <div className="bg-blue-400 h-full w-full flex flex-col">
       {/*<div ref={chartRef} />*/}
       <HighchartsReact
         // ref={chartRef}
         highcharts={Highcharts}
         options={chartOptions}
+        containerProps={{ style: { height: "100%", width: "100%" } }}
       />
       <div className="flex mt-2 gap-2">
         <button className="bg-white rounded-xl  p-1" onClick={logInfo}>
