@@ -253,10 +253,11 @@ const BubbleChartVersion2 = () => {
       gridLineWidth: 1,
       type: "logarithmic",
       min: 2000,
-      max: 120000,
+      max: 100000,
       startOnTick: false,
-      endOnTick: false,
-      maxPadding: 0.2,
+      endOnTick: true,
+      // maxPadding: 0.2,
+      tickLength: 0,
     },
     yAxis: {
       title: {
@@ -397,6 +398,7 @@ const BubbleChartVersion2 = () => {
 
   const splitButtonHandler = () => {
     //might need to add handler for if series is underfined
+
     const series = chart.series[0],
       worldPoint = series.points.find((p) => p.id === "world");
     // console.log("world Point: ", worldPoint);
@@ -421,7 +423,7 @@ const BubbleChartVersion2 = () => {
   };
 
   return (
-    <div className="bg-blue-400 h-full w-full flex flex-col">
+    <div className=" h-full w-full flex flex-col">
       {/*<div ref={chartRef} />*/}
       <HighchartsReact
         // ref={chartRef}
