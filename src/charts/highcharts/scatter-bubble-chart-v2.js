@@ -250,6 +250,7 @@ const BubbleChartVersion2 = () => {
       title: {
         text: "GDP per capita in 2019, log scale, $",
       },
+      gridLineWidth: 1,
       type: "logarithmic",
       min: 2000,
       max: 120000,
