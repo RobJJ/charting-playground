@@ -32,6 +32,17 @@ const ScatterChart = () => {
     legend: {
       enabled: false,
     },
+    tooltip: {
+      // enabled: false,
+      useHTML: true,
+      headerFormat: "<table>",
+      pointFormat:
+        '<tr><th colspan="2"><h3><u>{point.district}</u></h3></th></tr>' +
+        "<tr><th>Env Score: </th><td>{point.x}</td></tr>" +
+        "<tr><th>Eco Score: </th><td>{point.y}</td></tr>",
+      followPointer: true,
+      hideDelay: 0,
+    },
     title: {
       // text: _.startCase(`Experimal build: Highchart: ${type} chart`),
       text: `Experimental build - HighCharts - Scatter chart`,
@@ -54,7 +65,7 @@ const ScatterChart = () => {
       },
       //   min: 50,
       //   max: 100,
-      startOnTick: false,
+      startOnTick: true,
       endOnTick: false,
       maxPadding: 0.2,
     },
@@ -76,10 +87,10 @@ const ScatterChart = () => {
             enabled: false,
           },
         },
-        dataLabels: {
-          enabled: true,
-          format: "{point.district}",
-        },
+        // dataLabels: {
+        //   enabled: true,
+        //   format: "{point.district}",
+        // },
 
         cursor: "pointer",
       },
