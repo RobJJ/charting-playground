@@ -8,7 +8,7 @@ import { scatterData } from "./data-scatter-v1";
 highchartsMore(Highcharts);
 function dataMapping(data) {
   return data.map(function (point) {
-    return { x: point.eco, y: point.econ };
+    return { ...point, x: point.eco, y: point.econ };
   });
 }
 
